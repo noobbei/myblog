@@ -1,0 +1,1306 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Godbei">
+  <meta name="keywords" content="Godbei">
+  
+    <meta name="description" content="申请微信公众号以及配置流程简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信公众号开发(Python)[1]">
+<meta property="og:url" content="https://blog.noobbei.top/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%B8%80)/index.html">
+<meta property="og:site_name" content="Godbei的小窝">
+<meta property="og:description" content="申请微信公众号以及配置流程简介">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/noobbei/myblog/raw/master/img/gongzhonghao.webp">
+<meta property="article:published_time" content="2024-01-13T02:13:00.000Z">
+<meta property="article:modified_time" content="2024-01-13T08:52:29.280Z">
+<meta property="article:author" content="Godbei">
+<meta property="article:tag" content="公众号开发">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/noobbei/myblog/raw/master/img/gongzhonghao.webp">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>微信公众号开发(Python)[1] - Godbei的小窝</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.noobbei.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading_dot.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Godbei的小窝</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/noobbei/myblog/raw/master/img/wechatpython.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微信公众号开发(Python)[1]"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Godbei
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 10:13" pubdate>
+          2024年1月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="学习"
+        id="heading-4ef520d6cd20ba4a727af08e17e4939e" role="tab" data-toggle="collapse" href="#collapse-4ef520d6cd20ba4a727af08e17e4939e"
+        aria-expanded="true"
+      >
+        学习
+        <span class="list-group-count">(12)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-4ef520d6cd20ba4a727af08e17e4939e"
+           role="tabpanel" aria-labelledby="heading-4ef520d6cd20ba4a727af08e17e4939e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="博客"
+        id="heading-c50d13646ec66f1929da5d491f2dff0f" role="tab" data-toggle="collapse" href="#collapse-c50d13646ec66f1929da5d491f2dff0f"
+        aria-expanded="false"
+      >
+        博客
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c50d13646ec66f1929da5d491f2dff0f"
+           role="tabpanel" aria-labelledby="heading-c50d13646ec66f1929da5d491f2dff0f">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Hexo"
+        id="heading-c00d1eb68b529768ba98c975c76a9b66" role="tab" data-toggle="collapse" href="#collapse-c00d1eb68b529768ba98c975c76a9b66"
+        aria-expanded="false"
+      >
+        Hexo
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-c00d1eb68b529768ba98c975c76a9b66"
+           role="tabpanel" aria-labelledby="heading-c00d1eb68b529768ba98c975c76a9b66">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/01/08/Hexo%20%E5%B0%86Hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="Hexo - 将Hexo部署到云服务器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo - 将Hexo部署到云服务器</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程"
+        id="heading-41282bf95e43c64d579757573a03cdde" role="tab" data-toggle="collapse" href="#collapse-41282bf95e43c64d579757573a03cdde"
+        aria-expanded="true"
+      >
+        编程
+        <span class="list-group-count">(11)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-41282bf95e43c64d579757573a03cdde"
+           role="tabpanel" aria-labelledby="heading-41282bf95e43c64d579757573a03cdde">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="false"
+      >
+        Linux
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="CentOS"
+        id="heading-aa1fc3398e84bda331b47203c1e53ad5" role="tab" data-toggle="collapse" href="#collapse-aa1fc3398e84bda331b47203c1e53ad5"
+        aria-expanded="false"
+      >
+        CentOS
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-aa1fc3398e84bda331b47203c1e53ad5"
+           role="tabpanel" aria-labelledby="heading-aa1fc3398e84bda331b47203c1e53ad5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/01/07/Linux%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="Linux基本概念"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Linux基本概念</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/07/Linux%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" title="Linux文件结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Linux文件结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/07/Linux%E6%A6%82%E8%BF%B0/" title="Linux概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Linux概述</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/07/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4-1/" title="Linux的基本命令-1"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Linux的基本命令-1</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/07/Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4-2/" title="Linux的基本命令-2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Linux的基本命令-2</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Nginx"
+        id="heading-62e0b5b350c9e3d2c19aa801d9442ba9" role="tab" data-toggle="collapse" href="#collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
+        aria-expanded="false"
+      >
+        Nginx
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-62e0b5b350c9e3d2c19aa801d9442ba9"
+           role="tabpanel" aria-labelledby="heading-62e0b5b350c9e3d2c19aa801d9442ba9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/01/10/Nginx%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" title="Nginx的配置文件"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Nginx的配置文件</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Python"
+        id="heading-a7f5f35426b927411fc9231b56382173" role="tab" data-toggle="collapse" href="#collapse-a7f5f35426b927411fc9231b56382173"
+        aria-expanded="true"
+      >
+        Python
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-a7f5f35426b927411fc9231b56382173"
+           role="tabpanel" aria-labelledby="heading-a7f5f35426b927411fc9231b56382173">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="公众号开发"
+        id="heading-9691122a1e64153af97a59511d302530" role="tab" data-toggle="collapse" href="#collapse-9691122a1e64153af97a59511d302530"
+        aria-expanded="true"
+      >
+        公众号开发
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9691122a1e64153af97a59511d302530"
+           role="tabpanel" aria-labelledby="heading-9691122a1e64153af97a59511d302530">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%B8%80)/" title="微信公众号开发(Python)[1]"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">微信公众号开发(Python)[1]</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%BA%8C)/" title="微信公众号开发(Python)[2]"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信公众号开发(Python)[2]</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%B8%89)/" title="微信公众号开发(Python)[3]"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信公众号开发(Python)[3]</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E5%9B%9B)/" title="微信公众号开发(Python)[4]"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信公众号开发(Python)[4]</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%BA%94)/" title="微信公众号开发(Python)[5]"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">微信公众号开发(Python)[5]</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">微信公众号开发(Python)[1]</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2024年1月13日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="申请微信公众号以及配置流程简介"><a href="#申请微信公众号以及配置流程简介" class="headerlink" title="申请微信公众号以及配置流程简介"></a>申请微信公众号以及配置流程简介</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>微信公众号开发(一)——申请微信公众号以及配置流程简介</li>
+<li><a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%BA%8C)/" title="微信公众号开发(Python)[2]">微信公众号开发(二)——解析微信请求及响应消息</a></li>
+<li><a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%B8%89)/" title="微信公众号开发(Python)[3]">微信公众号开发(三)——解析微信事件XML数据消息及响应</a></li>
+<li><a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E5%9B%9B)/" title="微信公众号开发(Python)[4]">微信公众号开发(四)——公众号按钮设置及自己的微信按钮编辑器</a></li>
+<li><a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%BA%94)/" title="微信公众号开发(Python)[5]">微信公众号开发(五)——微信网页授权获取用户openId</a></li>
+</ol>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要开发微信公众号, 首先得有注册一个微信公众号. </p>
+<p>个人注册建议注册<strong>订阅号</strong>.</p>
+<p>什么是订阅号？</p>
+<p>订阅号：为媒体和个人提供一种新的信息传播方式，主要功能是在微信侧给用户传达资讯；（功能类似报纸杂志，提供新闻信息或娱乐趣事）</p>
+<p>适用人群：个人、媒体、企业、政府或其他组织。</p>
+<p>群发次数：订阅号（认证用户、非认证用户）1天内可群发1次消息。</p>
+<p>下面是微信公众号的注册准备以及流程.</p>
+<h2 id="个人注册微信公众号-订阅号-准备"><a href="#个人注册微信公众号-订阅号-准备" class="headerlink" title="个人注册微信公众号(订阅号)准备"></a>个人注册微信公众号(订阅号)准备</h2><ul>
+<li><p><strong>邮箱</strong>: 确保该邮箱没有用于注册绑定过过其他公众号、小程序、开放平台；</p>
+</li>
+<li><p><strong>公众号主体的相关证件</strong>: 提前准备好身份证正反面照片</p>
+</li>
+<li><p><strong>账号类型</strong>: 订阅号</p>
+</li>
+<li><p><strong>公众号名称和头像</strong>:</p>
+<ul>
+<li><p>公众号的头像: 随时可以修改, 但是还是建议提前设计好；</p>
+</li>
+<li><p>公众号的名称: 个人主体一年可以修改2次.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="注册步骤"><a href="#注册步骤" class="headerlink" title="注册步骤"></a>注册步骤</h2><ol>
+<li>打开微信公众平台官网: <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a> 右上角点击<code>立即注册</code></li>
+</ol>
+<p><img src="/./../img/post_img/image-20240113140237992.png" srcset="/img/loading_dot.gif" lazyload alt="微信公众平台官网"></p>
+<ol start="2">
+<li><p>选择账号类型</p>
+<p><img src="/./../img/post_img/image-20240113141259187.png" srcset="/img/loading_dot.gif" lazyload alt="选择账号类型"></p>
+</li>
+<li><p>填写邮箱, 登录邮箱, 查看激活邮件, 填写邮箱验证码激活, 点击注册</p>
+<p><img src="/./../img/post_img/image-20240113141524036.png" srcset="/img/loading_dot.gif" lazyload alt="填写邮箱"></p>
+<p><img src="/./../img/post_img/image-20240113143316785.png" srcset="/img/loading_dot.gif" lazyload alt="激活邮件"></p>
+<div class="note note-warning">
+            <p>若未收到此邮件：</p><p>  ①请将微信团队邮箱设置为白名单后重新发送邮件，操作方法：登录邮箱-&gt;点击设置-&gt;反垃圾&#x2F;黑名单-&gt;添加白名单（<a href="mailto:&#119;&#x65;&#x69;&#x78;&#105;&#110;&#116;&#x65;&#x61;&#x6d;&#x40;&#x74;&#101;&#110;&#99;&#101;&#110;&#x74;&#x2e;&#x63;&#111;&#x6d;">&#119;&#x65;&#x69;&#x78;&#105;&#110;&#116;&#x65;&#x61;&#x6d;&#x40;&#x74;&#101;&#110;&#99;&#101;&#110;&#x74;&#x2e;&#x63;&#111;&#x6d;</a>）</p><p>  ②如果已经设置，建议更换浏览器&#x2F;网络环境重新发送，或者是使用其他邮箱激活。</p>
+          </div>
+</li>
+<li><p>选择类型, 选择注册地</p>
+<p><img src="/./../img/post_img/image-20240113143624509.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113143624509"></p>
+<p><img src="/./../img/post_img/image-20240113143848819.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113143848819"></p>
+</li>
+<li><p>信息等级, 选择个人类型</p>
+<p><img src="/./../img/post_img/image-20240113144742748.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113144742748"></p>
+</li>
+<li><p>填写身份证信息、手机号</p>
+<p><img src="/./../img/post_img/image-20240113144727238.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113144727238"></p>
+</li>
+<li><p>填写创作者信息，点击继续（如使用过其他内容创作平台，可填写相关信息。如没有，可无需填写。无论是否填写，对账号后续使用不会有影响）</p>
+<p><img src="/./../img/post_img/image-20240113144841652.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113144841652"></p>
+</li>
+<li><p>填写账号信息，包括公众号名称、功能介绍，选择运营地区</p>
+</li>
+</ol>
+<p><img src="/./../img/post_img/5124e8158f47a687cd3e774a3d9b8e00.png" srcset="/img/loading_dot.gif" lazyload alt="img"></p>
+<p>恭喜注册成功！可以开始使用公众号了~</p>
+<p><img src="/./../img/post_img/0490062b1811e615320b53b08b09d11d.jpg" srcset="/img/loading_dot.gif" lazyload alt="img"></p>
+<h2 id="后台配置及微信调用流程"><a href="#后台配置及微信调用流程" class="headerlink" title="后台配置及微信调用流程"></a>后台配置及微信调用流程</h2><h3 id="后台配置"><a href="#后台配置" class="headerlink" title="后台配置"></a>后台配置</h3><p>公众号申请成功后，要做一些基本配置，让微信知道我方服务器地址多少，所以，我们首要第一步就是要在微信后台管理界面上配置好我方服务器提供给微信后台调用的接口地址。</p>
+<p>在微信后台找到：【开发】-【基本配置】-【服务器配置】-【修改配置】例如下图：</p>
+<p><img src="/./../img/post_img/image-20240113151205267.png" srcset="/img/loading_dot.gif" lazyload alt="image-20240113151205267"></p>
+<p><code>URL</code>: 你自己的接口url, 需要提前写好接口, 否则点击提交是不会成功的.</p>
+<p><code>Token</code>: 自定义的字符串, 必须为英文或数字, 长度3-32字符, 用于验证请求是否来自微信.</p>
+<p><code>EncodingAESKey</code>: 消息加解密密钥, 用于消息体加解密过程.</p>
+<h3 id="微信调用我方服务器流程"><a href="#微信调用我方服务器流程" class="headerlink" title="微信调用我方服务器流程"></a>微信调用我方服务器流程</h3><p>无论是微信将用户消息推送给我方服务器，还是在微信后台进行接口地址的配置，微信服务器都会调用这个配置的接口地址，如果这个接口地址不可访问，微信会直接提示配置失败.</p>
+<p><strong>流程1、微信后台的HTTP请求</strong></p>
+<p>在基本配置页面, 点击<strong>提交</strong>时，微信会向配置的接口地址发出一个HTTP的GET请求，该请求携带了几个参数值，我方服务器应解析这些参数值并告诉微信后台是否正确。下表列出了微信请求时给的参数：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>示列值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>signature</td>
+<td>043eebc1e8ce70c1a39d342e7404bb16662a5449</td>
+<td>微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>1561912408</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>1671776044</td>
+<td>随机数</td>
+</tr>
+<tr>
+<td>echostr</td>
+<td>54yvj673x21cb57h</td>
+<td>随机字符串</td>
+</tr>
+</tbody></table>
+<p>我方服务器将会收到这个请求，必须务必验证 <code>signature</code> 的正确性以保证这个请求是来自微信后台的，一切确认无误后，只需要将 <code>echostr</code> 的内容原样返回即可。</p>
+<p><strong>流程2、我方服务器验证请求</strong></p>
+<p>我方服务器获取到请求后，务必进行 <code>signature</code> 正确性判断，下面是来自微信官网的一张流程图，方便对验证流程的直观说明：</p>
+<p><img src="/./../img/post_img/wechat_1_3.jpeg" srcset="/img/loading_dot.gif" lazyload alt="流程"></p>
+<p>图中提到的“哈希算法”，其实使用的算法是 <code>sha1</code> 算法，下文将介绍如何使用 <code>Python</code> 编写对该请求的验证。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/Python/" class="category-chain-item">Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/Python/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/" class="category-chain-item">公众号开发</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91/" class="print-no-link">#公众号开发</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>微信公众号开发(Python)[1]</div>
+      <div>https://blog.noobbei.top/2024/01/13/微信公众号开发(一)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Godbei</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/13/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91(%E4%BA%8C)/" title="微信公众号开发(Python)[2]">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">微信公众号开发(Python)[2]</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/13/Windows%E5%BC%80%E5%90%AFHDR%E5%90%8E,%20Chrome%E5%86%85%E6%88%AA%E5%9B%BE%E6%B3%9B%E7%99%BD%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="解决Windows开启HDR后Chrome内截图泛白的问题">
+                        <span class="hidden-mobile">解决Windows开启HDR后Chrome内截图泛白的问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"2nTqJaJJ5jbSrm9uBWWychoK-MdYXbMMI","appKey":"Q0Sn32DSZYhd76MbgQINZxr1","path":"window.location.pathname","placeholder":555,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":["nick"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://valine.noobbei.top","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>
+
+<a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      晋ICP备2024028914号-1
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
